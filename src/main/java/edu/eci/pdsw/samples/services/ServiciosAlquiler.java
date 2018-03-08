@@ -14,7 +14,7 @@ import java.util.List;
 public interface ServiciosAlquiler {
 
     
-    public abstract int valorMultaRetrasoxDia();
+    public abstract int valorMultaRetrasoxDia(int itemId);
     
     public abstract Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler;
 
@@ -68,16 +68,6 @@ public interface ServiciosAlquiler {
     public abstract void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler;
 
     public abstract void registrarCliente(Cliente p) throws ExcepcionServiciosAlquiler;
-
-    /**
-     * @obj registrar la devolucion de un item
-     * @param iditem el item a regresar
-     * @pos el item se enuentra disponible para el alquiler y el usuario ya no
-     * lo tiene dentro de sus elementos rentados
-     * @throws ExcepcionServiciosAlquiler si el item no existe o no se encuentra
-     * alquilado
-     */
-    public abstract void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler;
 
     /**
      * @obj consultar el costo del alquiler de un item

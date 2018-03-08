@@ -25,7 +25,7 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
     private ItemDAO daoItem;
         
     @Override
-    public int valorMultaRetrasoxDia() {
+    public int valorMultaRetrasoxDia(int itemId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -80,11 +80,6 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
 
     @Override
     public void registrarCliente(Cliente p) throws ExcepcionServiciosAlquiler {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

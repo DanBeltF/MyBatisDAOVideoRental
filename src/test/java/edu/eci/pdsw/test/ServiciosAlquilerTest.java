@@ -2,11 +2,13 @@ package edu.eci.pdsw.test;
 
 import java.util.List;
 
+import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,6 +24,9 @@ import static org.quicktheories.generators.SourceDSL.*;
  */
 
 public class ServiciosAlquilerTest {
+
+    @Inject
+    private SqlSession sqlSession;
 
     ServiciosAlquiler serviciosAlquiler;
 
