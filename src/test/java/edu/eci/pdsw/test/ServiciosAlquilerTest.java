@@ -41,8 +41,10 @@ public class ServiciosAlquilerTest {
                 Cliente cliente = serviciosAlquiler.consultarCliente(id);
             } catch(ExcepcionServiciosAlquiler e) {
                 r = true;
+            } catch(IndexOutOfBoundsException e) {
+                r = true;
             }
-            return r;
+             return r;
         });
     }
 
