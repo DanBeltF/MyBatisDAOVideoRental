@@ -45,6 +45,11 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
     }
 
     @Override
+    public int valorMultaRetrasoxDia(int itemId) {
+        return MULTA_DIARIA;
+    }
+
+    @Override
     public Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler {
         Cliente c=null;
         if(clientes.containsKey(docu)){
@@ -207,30 +212,6 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
         }
 
     }
-    
-    
-    @Override
-    public void registrarDevolucion(int iditem) throws ExcepcionServiciosAlquiler{
-        if (!itemsrentados.containsKey(iditem)) {
-            throw new ExcepcionServiciosAlquiler("El item " + iditem + "no esta en alquiler");
-        } else {
-            
-            ItemRentado ir=itemsrentados.get(iditem);
-            itemsDisponibles.put(ir.getItem().getId(), ir.getItem());
-            itemsrentados.remove(iditem);            
-            Cliente c=consultarClienteConItem(iditem);
-            c.getRentados().remove(ir);
-            mapaPrestamosPorIdCliente.remove(iditem);
-        }
-    }
-
-    @Override
-    public int valorMultaRetrasoxDia() {
-        return MULTA_DIARIA;
-    }
-
-    
-    
     
     
     private void poblar() {
