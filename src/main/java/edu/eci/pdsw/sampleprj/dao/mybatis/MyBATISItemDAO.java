@@ -22,7 +22,7 @@ import java.sql.SQLException;
  * @author hcadavid
  */
 public class MyBATISItemDAO implements ItemDAO{
-
+    
     @Inject
     private ItemMapper itemMapper;    
         
