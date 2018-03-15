@@ -4,6 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
+    
+    <insert parameterType="map" id="registrarCliente" >
+        insert into VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado) 
+        values (#{idcli.documento},#{idcli.nombre},#{idcli.telefono},#{idcli.direccion},#{idcli.email},#{idcli.vetado});
+    </insert>
+
         
     <insert parameterType="map" id="agregarItemRentadoACliente">
         insert into VI_ITEMRENTADO (id,CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta) 

@@ -11,7 +11,9 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ClienteMapper {
     
-    public Cliente consultarCliente(@Param("idcli") int id); 
+    public void registrarCliente(@Param("idcli") Cliente c);
+    
+    public Cliente consultarCliente(@Param("idcli") long id); 
     
     /**
      * Registrar un nuevo item rentado asociado al cliente identificado

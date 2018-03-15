@@ -2,6 +2,7 @@ package edu.eci.pdsw.samples.services.impl;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.ItemDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 
@@ -23,6 +24,9 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
 
     @Inject
     private ItemDAO daoItem;
+    
+    @Inject 
+    private ClienteDAO daoCliente;
         
     @Override
     public int valorMultaRetrasoxDia(int itemId) {
@@ -31,7 +35,11 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
 
     @Override
     public Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return daoCliente.load(docu);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler("Error al consultar el cliente"+docu,ex);
+        }
     }
 
     @Override
@@ -80,7 +88,11 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
 
     @Override
     public void registrarCliente(Cliente p) throws ExcepcionServiciosAlquiler {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            daoCliente.save(p);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionServiciosAlquiler("Error al registrar el cliente "+p.toString() ,ex);
+        }
     }
 
     @Override

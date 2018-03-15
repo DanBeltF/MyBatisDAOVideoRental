@@ -23,15 +23,20 @@ public class MyBATISClienteDAO implements ClienteDAO{
     @Override
     public void save(Cliente c) throws PersistenceException {
         try {
-            //clienteMapper.
+            clienteMapper.registrarCliente(c);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            //throw new PersistenceException("Error al registrar el item " + it.toString(), e);
+            throw new PersistenceException("Error al registrar el cliente" + c.toString(), e);
         }
     }
 
     @Override
-    public Cliente load(int id) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cliente load(long id) throws PersistenceException {
+        try{
+            return clienteMapper.consultarCliente(id);
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al consultar el cliente "+id,e);
+        }
     }
     
 }

@@ -12,6 +12,10 @@ import org.mybatis.guice.XMLMyBatisModule;
 import java.util.Optional;
 
 import static com.google.inject.Guice.createInjector;
+import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
+import edu.eci.pdsw.sampleprj.dao.ItemDAO;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISClienteDAO;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISItemDAO;
 
 
 /**
@@ -31,6 +35,9 @@ public class ServiciosAlquilerFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(ServiciosAlquiler.class).to(ServiciosAlquilerItemsImpl.class);
+                bind(ItemDAO.class).to(MyBATISItemDAO.class);
+                bind(ClienteDAO.class).to(MyBATISClienteDAO.class);
+                
             }
         });
     }
